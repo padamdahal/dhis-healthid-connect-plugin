@@ -29,7 +29,7 @@ export default function HealthIdPlugin(props) {
                 setConfigLoading(true)
 
                 const res = await fetch(
-                    `/api/dataStore/${DATASTORE_NAMESPACE}/${DATASTORE_KEY}`
+                    `/ephc/api/dataStore/${DATASTORE_NAMESPACE}/${DATASTORE_KEY}`
                 )
 
                 if (!res.ok) {
