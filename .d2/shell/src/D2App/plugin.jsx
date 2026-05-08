@@ -44,7 +44,7 @@ export default function HealthIdPlugin(props) {
 
                 // fallback config (important for dev/testing)
                 setConfig({
-                    fhirBaseUrl: 'https://your-fhir-server/fhir'
+                    fhirBaseUrl: 'https://api.amakomaya.com'
                 })
             } finally {
                 setConfigLoading(false)
