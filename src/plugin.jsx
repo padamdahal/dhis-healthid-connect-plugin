@@ -17,7 +17,7 @@ export default function HealthIdPlugin(props) {
     const [config, setConfig] = useState(null)
     const [configLoading, setConfigLoading] = useState(true)
 
-    const DATASTORE_NAMESPACE = 'healthid-plugin'
+    const DATASTORE_NAMESPACE = 'healthidconnect'
     const DATASTORE_KEY = 'config'
 
     // ---------------------------
