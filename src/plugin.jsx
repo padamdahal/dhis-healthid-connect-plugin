@@ -11,7 +11,7 @@ import {
 import { searchPatientByIdentifier  } from './services/fhir'
 
 export default function HealthIdPlugin(props) {
-    const [idType, setIdType] = useState('national-id')
+    const [idType, setIdType] = useState('')
     const [idValue, setIdValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
@@ -72,6 +72,11 @@ export default function HealthIdPlugin(props) {
             return
         }
 
+        /*if (!idType) {
+            setError('Please select ID type')
+            return
+        }*/
+
         if (!config?.fhirBaseUrl) {
             setError('FHIR configuration not loaded')
             return
@@ -82,7 +87,7 @@ export default function HealthIdPlugin(props) {
 
             const result = await searchPatientByIdentifier({
                 baseUrl: config.fhirBaseUrl,
-                system: identifierMap[idType],   // 👈 dynamic from datastore
+                system: 'https://fhir.hmis.gov.np/NamingSystem/health-id',   // 👈 dynamic from datastore
                 value: idValue,
                 username: config.username,
                 password: config.password
