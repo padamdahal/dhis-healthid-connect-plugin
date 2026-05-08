@@ -8,7 +8,7 @@ import { PluginOuterErrorBoundary } from './PluginOuterErrorBoundary.jsx'
 // This placeholder component gets replaced at shell-bootstrapping time by
 // `React.lazy(() => import('./D2App/<entryPoint>'))`
 // The lazy import provides bundle splitting
-const D2App = React.lazy(() => import('./D2App/App.jsx'))
+const D2App = React.lazy(() => import('./D2App/index.js'))
 
 // Injected by backend when serving index or plugin HTML
 // https://github.com/dhis2/dhis2-core/pull/16703

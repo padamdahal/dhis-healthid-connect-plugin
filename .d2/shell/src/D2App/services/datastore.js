@@ -1,4 +1,4 @@
 export async function getConfig(api) {
-    const res = await api.get('/dataStore/healthid-connect/config');
+    const res = await api.get('/dataStore/healthidconnect/config');
     return await res.json();
 }

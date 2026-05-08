@@ -1,6 +1,6 @@
 {
-  "short_name": "dhis-healthid-connect-plugin",
-  "name": "dhis-healthid-connect-plugin",
+  "short_name": "Health ID Connect Plugin",
+  "name": "Health ID Connect Plugin",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
