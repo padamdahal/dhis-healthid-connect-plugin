@@ -1,0 +1,9 @@
+{
+  "type": "app",
+  "name": "dhis-healthid-connect-plugin",
+  "version": "1.0.0",
+  "title": "dhis-healthid-connect-plugin",
+  "entryPoints": {
+    "app": "index.html"
+  }
+}
