@@ -1,0 +1,17 @@
+{
+  "name": "dhis-healthid-connect-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@dhis2/app-runtime": "^3.17.0",
+    "@dhis2/cli-app-scripts": "^12.11.0",
+    "@dhis2/data-engine": "^3.17.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "scripts": {
+    "start": "d2-app-scripts start",
+    "build": "d2-app-scripts build",
+    "test": "d2-app-scripts test"
+  }
+}
