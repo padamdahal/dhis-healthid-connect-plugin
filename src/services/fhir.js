@@ -1,4 +1,4 @@
-export async function searchPatient({ baseUrl, system, value, username, password }) {
+export async function searchPatientByIdentifier({ baseUrl, system, value, username, password }) {
     const url = `${baseUrl}/Patient?identifier=${encodeURIComponent(system + '|' + value)}`;
 
     const res = await fetch(url, {

@@ -8,6 +8,8 @@ import {
     CircularLoader
 } from '@dhis2/ui'
 
+import { searchPatientByIdentifier  } from './services/fhir'
+
 export default function HealthIdPlugin(props) {
     const [idType, setIdType] = useState('national-id')
     const [idValue, setIdValue] = useState('')
@@ -40,17 +42,11 @@ export default function HealthIdPlugin(props) {
 
                 setConfig(data)
             } catch (e) {
-                console.warn('Using fallback config:', e.message)
-
-                // fallback config (important for dev/testing)
-                setConfig({
-                    fhirBaseUrl: 'https://api.amakomaya.com'
-                })
+                console.warn('Exception:', e.message)
             } finally {
                 setConfigLoading(false)
             }
         }
-
         loadConfig()
     }, [])
 
@@ -74,9 +70,13 @@ export default function HealthIdPlugin(props) {
         try {
             setLoading(true)
 
-            const response = await fetch(
-                `${config.fhirBaseUrl}/Patient?identifier=${idValue}`
-            )
+            const result = await searchPatientByIdentifier({
+                baseUrl: config.fhirBaseUrl,
+                system: idType,
+                value: idValue,
+                username: config.username,
+                password: config.password
+            })
 
             if (!response.ok) {
                 throw new Error('FHIR request failed')
