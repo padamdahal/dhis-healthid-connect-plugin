@@ -18,9 +18,18 @@ export default function HealthIdPlugin(props) {
     const [patient, setPatient] = useState(null)
     const [config, setConfig] = useState(null)
     const [configLoading, setConfigLoading] = useState(true)
+    const [identifierMap, setIdentifierMap] = useState({})
 
     const DATASTORE_NAMESPACE = 'healthidconnect'
     const DATASTORE_KEY = 'config'
+
+    const buildIdentifierMap = (identifiers) => {
+        const map = {}
+        Object.keys(identifiers || {}).forEach(key => {
+            map[key] = identifiers[key].system
+        })
+        return map
+    }
 
     // ---------------------------
     // Load config from DHIS2 DataStore
@@ -41,6 +50,7 @@ export default function HealthIdPlugin(props) {
                 const data = await res.json()
 
                 setConfig(data)
+                setIdentifierMap(buildIdentifierMap(data.identifiers))
             } catch (e) {
                 console.warn('Exception:', e.message)
             } finally {
@@ -72,7 +82,7 @@ export default function HealthIdPlugin(props) {
 
             const result = await searchPatientByIdentifier({
                 baseUrl: config.fhirBaseUrl,
-                system: idType,
+                system: identifierMap[idType],   // 👈 dynamic from datastore
                 value: idValue,
                 username: config.username,
                 password: config.password
